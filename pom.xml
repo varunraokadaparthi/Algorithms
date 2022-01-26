@@ -8,5 +8,14 @@
     <artifactId>algorithms</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <build>  
+    <directory>${project.basedir}/target</directory>  
+    <outputDirectory>${project.build.directory}/classes</outputDirectory>  
+    <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>  
+    <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>  
+    <scriptSourceDirectory>${project.basedir}/src/main/scripts</scriptSourceDirectory>  
+    <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+  </build>  
+
     
 </project>
