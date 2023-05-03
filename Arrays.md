@@ -12,4 +12,7 @@ Arrays.fill(arr, 0)
 Fill ArrayList<Integer>
 new ArrayList<>(Collections.nCopies(26, 0)
 
+print elements of array.
+Arrays.stream(<array>).forEach(System.out::println)
+
 
