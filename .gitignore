@@ -3,3 +3,4 @@ leetcode/target
 .idea/*
 target/
 .DS_Store
+generic.iml

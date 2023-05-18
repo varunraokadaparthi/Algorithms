@@ -11,5 +11,6 @@
 
     <modules>
         <module>leetcode</module>
+        <module>generic</module>
     </modules>
 </project>
