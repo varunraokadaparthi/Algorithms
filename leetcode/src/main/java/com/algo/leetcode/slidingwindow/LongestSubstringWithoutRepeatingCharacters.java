@@ -14,19 +14,21 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     Set<Character> set = new HashSet<>();
     int leftPointer = 0;
-    int rightPointer = leftPointer + 1 ;
+    int rightPointer = leftPointer;
     int lengthOfLongestSubstring = 0;
-    while (rightPointer < s.length() && leftPointer < s.length()) {
+    while (rightPointer < s.length()) {
       if (set.contains(s.charAt(rightPointer))) {
-        while (leftPointer < s.length() && s.charAt(leftPointer) != s.charAt(rightPointer)) {
+        while (s.charAt(leftPointer) != s.charAt(rightPointer)) {
           set.remove(s.charAt(leftPointer));
           leftPointer++;
         }
+        // set.remove(s.charAt(leftPointer)); optimize
+        rightPointer++;
         leftPointer++;
       } else {
         set.add(s.charAt(rightPointer));
         lengthOfLongestSubstring = Math.max(lengthOfLongestSubstring,
-                rightPointer - leftPointer);
+                rightPointer - leftPointer + 1);
         rightPointer++;
       }
     }
