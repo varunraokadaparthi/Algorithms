@@ -93,12 +93,6 @@ public class LongestPalindromicSubstring {
         j++;
       }
     }
-    for (int[] nums : dp) {
-      for (int num : nums) {
-        System.out.print(num + " ");
-      }
-      System.out.println();
-    }
     return start == -1 && end == -1 ?
             String.valueOf(s.charAt(s.length() - 1)) :
               s.substring(start, end + 1);
