@@ -8,7 +8,7 @@ import java.util.Stack;
  */
 public class DailyTemperatures {
 
-  public int[] dailyTemperatures(int[] temperatures) {
+  public int[] dailyTemperaturesNonStack(int[] temperatures) {
     int [] temp = new int[temperatures.length];
     temp[temperatures.length - 1] = 0;
     int count = 0;
@@ -36,9 +36,9 @@ public class DailyTemperatures {
   public int[] dailyTemperaturesStack(int[] temperatures) {
     Stack<Integer> stack = new Stack<>();
     int[] result = new int[temperatures.length];
-    result[temperatures.length] = 0;
-    stack.push(temperatures[temperatures.length - 1]);
-    for (int i = temperatures.length - 2; i >= 0; i++) {
+    result[temperatures.length - 1] = 0;
+    stack.push(temperatures.length - 1);
+    for (int i = temperatures.length - 2; i >= 0; i--) {
       while (!stack.isEmpty() && temperatures[i] >= temperatures[stack.peek()]) {
         stack.pop();
       }
@@ -46,8 +46,27 @@ public class DailyTemperatures {
         result[i] = 0;
       } else {
         result[i] = stack.peek() - i;
-        stack.push(i);
       }
+      stack.push(i);
+    }
+    return result;
+  }
+
+  /**
+   * Monotonically Decreasing Stack
+   * @param temperatures
+   * @return
+   */
+  public int[] dailyTemperatures(int[] temperatures) {
+    Stack<Integer> stack = new Stack<>();
+    int[] result = new int[temperatures.length];
+    stack.push(0);
+    for (int i = 1 ; i < temperatures.length; i++) {
+      while (!stack.isEmpty() && temperatures[i] > temperatures[stack.peek()]) {
+        int index = stack.pop();
+        result[index] = i - index;
+      }
+      stack.push(i);
     }
     return result;
   }
